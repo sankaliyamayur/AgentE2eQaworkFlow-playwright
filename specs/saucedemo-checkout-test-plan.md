@@ -138,3 +138,38 @@ This document details the test scenarios, test cases, and validation strategies 
 * **Expected Results**:
   * The user is immediately redirected to the login page `/admin/login`.
   * Navigating back to `/admin/dashboard` redirects the user back to `/admin/login` (unauthenticated redirection).
+
+---
+
+### Scenario 8: Audit Log Navigation & Verification
+* **Test Case ID**: TC-LOGIN-008
+* **Title**: Verify that a logged-in admin can navigate to the "Audit Log" screen from the dashboard.
+* **Preconditions**:
+  * User is successfully logged in and redirected to the dashboard.
+* **Step-by-Step Instructions**:
+  1. Once the dashboard loads, navigate to the sidebar menu.
+  2. Scroll down to locate the "Audit Log" menu item.
+  3. Click on the "Audit Log" menu item.
+  4. Verify the page URL and that the audit log records/table are displayed.
+* **Expected Results**:
+  * The sidebar contains the "Audit Log" link.
+  * Clicking "Audit Log" changes the URL to `/admin/audit-logs` (or relevant path) and displays the audit logs page successfully.
+
+---
+
+### Scenario 9: Session Timeout Validation
+* **Test Case ID**: TC-LOGIN-009
+* **Title**: Verify the session timeout popup, "Stay Logged In" persistence, and automatic logout after inactivity.
+* **Preconditions**:
+  * User is successfully logged in and redirected to the dashboard.
+* **Step-by-Step Instructions**:
+  1. Remain inactive on the screen for 5 minutes.
+  2. Verify that the "Session Timeout" popup is displayed.
+  3. Click "Stay Logged In" and verify that the session remains active and the popup disappears.
+  4. Wait another 5 minutes without performing any action on the popup.
+  5. Verify that the application automatically logs the user out.
+* **Expected Results**:
+  * A session timeout popup containing "Stay Logged In" is displayed after 5 minutes of inactivity.
+  * Clicking "Stay Logged In" keeps the dashboard session active.
+  * No interaction on the popup triggers automatic logout and redirects back to `/admin/login` once the timeout completes.
+
